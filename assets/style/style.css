@@ -1,8 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --bg-body: #d6d7db;
+  --bg-today-container: #fff;
+  --bg-week-container: #f7f6f9;
+  --main-text-color: #393939;
+  --text-color-soft: #393939;
+  --text-color-strong: #393939;
+  --bg-theme-switcher: #fff;
+  --input-border-color: rgb(24, 24, 24);
+}
+
+body.dark-theme {
+  --bg-body: #151618;
+  --bg-today-container: #606368;
+  --bg-week-container: #292929;
+  --main-text-color: #e9e9e9;
+  --text-color-soft: #ffb2ff;
+  --text-color-strong: #b64fc8;
+  --bg-theme-switcher: #b64fc8;
+  --input-border-color: #b64fc8;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #d6d7db;
+  background-color: var(--bg-body);
 }
 
 .container {
@@ -10,7 +32,7 @@ body {
 }
 
 .main-container {
-  background-color: #fff;
+  background-color: var(--bg-today-container);
   max-width: 992px;
   border-radius: 30px;
   margin-top: 50px;
@@ -28,7 +50,7 @@ body {
 }
 
 .today-container {
-  background-color: #ffffff;
+  background-color: var(--bg-today-container);
   padding: 40px;
   border-radius: 30px;
 }
@@ -47,27 +69,29 @@ body {
 }
 .location-input-container input {
   width: 100%;
-  border: none;
+  border: solid 2px var(--input-border-color);
+  border-radius: 20px;
   background: transparent;
   font-family: "Montserrat", sans-serif;
-  color: #393939;
+  color: var(--main-text-color);
   font-weight: 500;
   text-align: left;
   padding-left: 30px;
+  padding-right: 10px;
 }
 .location-input-container input:focus {
   outline: none;
 }
 .location-input-container ::placeholder {
-  color: #393939;
+  color: var(--main-text-color);
   font-family: "Montserrat", sans-serif;
-  font-size: 15px;
+  font-size: 12px;
 }
 .location-input-container img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 27px;
+  width: 31px;
 }
 @media screen and (max-width: 768px) {
   .location-input-container {
@@ -79,7 +103,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 58px;
   font-weight: 400;
-  color: #393939;
+  color: var(--main-text-color);
 }
 .today-forecast-container h3 span {
   font-size: 25px;
@@ -88,11 +112,11 @@ body {
 .today-forecast-container p {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  color: #7a7a7a;
+  color: var(--text-color-soft);
 }
 .today-forecast-container p strong {
   font-weight: 700;
-  color: #393939;
+  color: var(--main-text-color);
 }
 .today-forecast-container hr {
   opacity: 0.2;
@@ -118,7 +142,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: #393939;
+  color: var(--main-text-color);
   display: flex;
   align-items: center;
 }
@@ -161,7 +185,7 @@ body {
 }
 
 .week-container {
-  background-color: #f7f6f9;
+  background-color: var(--bg-week-container);
   padding: 40px;
   border-radius: 0 30px 30px 0;
 }
@@ -183,7 +207,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 25px;
-  color: #393939;
+  color: var(--text-color-soft);
 }
 
 .header-swtich-container .row {
@@ -197,7 +221,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 25px;
-  color: #393939;
+  color: var(--text-color-soft);
 }
 
 /* The switch - the box around the slider */
@@ -241,11 +265,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #b64fc8;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #b64fc8;
 }
 
 input:checked + .slider:before {
