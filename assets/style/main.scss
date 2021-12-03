@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap');
+$font: 'Roboto', sans-serif;
+
+body {
+    margin: 0;
+    padding: 100px;
+    background-color: #d6d7db;
+}
+
+.main-container {
+    background-color: #fff;
+    max-width: 1440px;
+    border-radius: 30px;
+}
+
+
+.week-container {
+    background-color: #f7f6f9;
+    padding: 50px 50px 50px 50px;
+    border-radius: 0 30px 30px 0;
+}
+
+////////////////// Today Weather //////////////////
+
+.today-container {
+    background-color: #ffffff;
+    padding: 50px 50px 50px 40px;
+    border-radius: 30px;
+}
+
+//Search Location Input
+.location-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    input {
+        width: 100%;
+        border: none;
+        background: transparent;
+        font-family: $font;
+        color: #393939;
+        font-weight: 500;
+        text-align: right;
+        &:focus {
+            outline: none;
+        }
+    }
+    ::placeholder {
+        color: #393939;
+        font-family: $font;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 27px;
+    }
+}
+
+//Today Main Forecast 
+
+
+// Today details 
+.today-details-container {
+    position: relative;
+    margin-bottom: 10px;
+    img {
+        width: 35px;
+    }
+}
+
+.city-image {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    margin: 30px auto 0 auto;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        filter: sepia(50%);
+        filter: brightness(50%);
+    }
+    h6 {
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: $font;
+        color: #fff;
+    }
+}
