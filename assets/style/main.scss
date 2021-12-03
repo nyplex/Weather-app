@@ -1,38 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap');
-$font: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+$font: 'Montserrat', sans-serif;
 
 body {
     margin: 0;
-    padding: 100px;
+    padding: 0;
     background-color: #d6d7db;
+}
+
+.container {
+    padding: 0;
 }
 
 .main-container {
     background-color: #fff;
-    max-width: 1440px;
+    max-width: 992px;
     border-radius: 30px;
-}
-
-
-.week-container {
-    background-color: #f7f6f9;
-    padding: 50px 50px 50px 50px;
-    border-radius: 0 30px 30px 0;
+    margin-top: 50px;
+    @media screen and(max-width: 992px) {
+        border-radius: 0;
+    }
+    @media screen and(max-width: 768px) {
+        margin-top: 0;
+        padding-top: 20px;
+    }
 }
 
 ////////////////// Today Weather //////////////////
 
 .today-container {
     background-color: #ffffff;
-    padding: 50px 50px 50px 40px;
+    padding: 40px;
     border-radius: 30px;
+    @media screen and(max-width: 992px) {
+        border-radius: 0;
+        padding: 10px;
+    }
 }
 
 //Search Location Input
 .location-input-container {
     position: relative;
     width: 100%;
-    margin-bottom: 30px;
+    max-width: 300px;
+    margin: 0 auto 30px auto;
     input {
         width: 100%;
         border: none;
@@ -40,7 +50,8 @@ body {
         font-family: $font;
         color: #393939;
         font-weight: 500;
-        text-align: right;
+        text-align: left;
+        padding-left: 30px;
         &:focus {
             outline: none;
         }
@@ -48,6 +59,7 @@ body {
     ::placeholder {
         color: #393939;
         font-family: $font;
+        font-size: 15px;
     }
     img {
         position: absolute;
@@ -55,17 +67,65 @@ body {
         left: 0;
         width: 27px;
     }
+    @media screen and(max-width: 768px) {
+        margin-left: 20px;
+    }
 }
 
 //Today Main Forecast 
+.today-forecast-container {
+    h3 {
+        font-family: $font;
+        font-size: 58px;
+        font-weight: 400;
+        color: #393939;
+        span {
+            font-size: 25px;
+            vertical-align: super;
+        }
+    }
+    p {
+        font-family: $font;
+        font-weight: 500;
+        color: #7a7a7a;
+        strong {
+            font-weight: 700;
+            color: #393939;
+        }
+    }
+    hr {
+        opacity: 0.2;
+    }
+}
 
+.main-today-weather {
+    margin: 0;
+    .row {
+        @media screen and(max-width: 768px) {
+            align-items: center;
+        }
+    }
+    @media screen and(max-width: 768px) {
+        margin: 0 auto 25px auto;
+    }
+}
 
 // Today details 
 .today-details-container {
     position: relative;
     margin-bottom: 10px;
+    font-family: $font;
+    font-weight: 600;
+    font-size: 14px;
+    color: #393939;
+    display: flex;
+    align-items: center;
+    @media screen and(max-width: 768px) {
+        justify-content: center;
+    }
     img {
         width: 35px;
+        margin-right: 10px;
     }
 }
 
@@ -96,3 +156,50 @@ body {
         color: #fff;
     }
 }
+
+
+////////////////// Week Weather //////////////////
+
+.week-container {
+    background-color: #f7f6f9;
+    padding: 40px;
+    border-radius: 0 30px 30px 0;
+    @media screen and(max-width: 992px) {
+        border-radius: 0;
+        padding: 10px;
+    }
+}
+
+.weekly-header-container {
+    width: 100%;
+    margin: auto;
+    .row {
+        max-width: 100%;
+    }
+    h3 {
+        font-family: $font;
+        font-weight: 600;
+        font-size: 25px;
+        color: #393939;
+    }
+}
+
+.header-swtich-container {
+    .row {
+        justify-content: end;
+        .col {
+            width: fit-content
+        }
+    }
+}
+
+.today-highlight-container {
+    h3 {
+        font-family: $font;
+        font-weight: 600;
+        font-size: 25px;
+        color: #393939;
+    }
+}
+
+@import 'elements';

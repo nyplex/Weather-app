@@ -1,0 +1,195 @@
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+// Style Degrees switcher button 
+
+button {
+    border: none;
+    border-radius: 100%;
+    font-family: $font;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #fff;
+    height: 45px;
+    width: 45px;
+
+    &:hover {
+        background-color: #ccc;
+    }
+}
+
+.activate {
+    background-color: #000;
+    color: #fff;
+}
+
+//style daily forecast card
+.weekly-forecast-container {
+    margin-top: 50px;
+
+    .row {
+        width: 100%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto;
+        gap: 8px;
+
+        @media screen and(max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and(max-width: 576px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+.daily-card-container {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+
+    h6 {
+        font-family: $font;
+        font-weight: 600;
+        font-size: 20px;
+        text-align: center;
+        color: #393939;
+    }
+
+    img {
+        width: 75%;
+        display: block;
+        margin: 10px auto;
+    }
+
+    p {
+        margin: 0;
+        font-family: $font;
+        font-weight: 700;
+        text-align: center;
+        color: #393939;
+
+        span {
+            margin-left: 8px;
+            color: #888888;
+        }
+    }
+}
+
+//Style hightlight section 
+
+.today-highlight-container {
+    margin-top: 50px;
+    .row {
+        width: 100%;
+        margin: 30px auto 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 12px;
+        @media screen and(max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and(max-width: 576px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .hightslight-cards {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        h6 {
+            font-family: $font;
+            font-weight: 500;
+            color: #888888;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            width: 80%;
+            display: block;
+            margin: auto;
+        }
+    }
+}
+
+.sunTime-card {
+    img {
+        width: 50px !important;
+        display: inline !important;
+        margin-right: 10px !important;
+    }
+    span {
+        font-family: $font;
+        font-weight: 600;
+        color: #393939;
+    }
+}

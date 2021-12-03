@@ -1,48 +1,67 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   margin: 0;
-  padding: 100px;
+  padding: 0;
   background-color: #d6d7db;
+}
+
+.container {
+  padding: 0;
 }
 
 .main-container {
   background-color: #fff;
-  max-width: 1440px;
+  max-width: 992px;
   border-radius: 30px;
+  margin-top: 50px;
 }
-
-.week-container {
-  background-color: #f7f6f9;
-  padding: 50px 50px 50px 50px;
-  border-radius: 0 30px 30px 0;
+@media screen and (max-width: 992px) {
+  .main-container {
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-container {
+    margin-top: 0;
+    padding-top: 20px;
+  }
 }
 
 .today-container {
   background-color: #ffffff;
-  padding: 50px 50px 50px 40px;
+  padding: 40px;
   border-radius: 30px;
+}
+@media screen and (max-width: 992px) {
+  .today-container {
+    border-radius: 0;
+    padding: 10px;
+  }
 }
 
 .location-input-container {
   position: relative;
   width: 100%;
-  margin-bottom: 30px;
+  max-width: 300px;
+  margin: 0 auto 30px auto;
 }
 .location-input-container input {
   width: 100%;
   border: none;
   background: transparent;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #393939;
   font-weight: 500;
-  text-align: right;
+  text-align: left;
+  padding-left: 30px;
 }
 .location-input-container input:focus {
   outline: none;
 }
 .location-input-container ::placeholder {
   color: #393939;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
 }
 .location-input-container img {
   position: absolute;
@@ -50,13 +69,67 @@ body {
   left: 0;
   width: 27px;
 }
+@media screen and (max-width: 768px) {
+  .location-input-container {
+    margin-left: 20px;
+  }
+}
+
+.today-forecast-container h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 58px;
+  font-weight: 400;
+  color: #393939;
+}
+.today-forecast-container h3 span {
+  font-size: 25px;
+  vertical-align: super;
+}
+.today-forecast-container p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #7a7a7a;
+}
+.today-forecast-container p strong {
+  font-weight: 700;
+  color: #393939;
+}
+.today-forecast-container hr {
+  opacity: 0.2;
+}
+
+.main-today-weather {
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+  .main-today-weather .row {
+    align-items: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-today-weather {
+    margin: 0 auto 25px auto;
+  }
+}
 
 .today-details-container {
   position: relative;
   margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #393939;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .today-details-container {
+    justify-content: center;
+  }
 }
 .today-details-container img {
   width: 35px;
+  margin-right: 10px;
 }
 
 .city-image {
@@ -83,8 +156,234 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #fff;
+}
+
+.week-container {
+  background-color: #f7f6f9;
+  padding: 40px;
+  border-radius: 0 30px 30px 0;
+}
+@media screen and (max-width: 992px) {
+  .week-container {
+    border-radius: 0;
+    padding: 10px;
+  }
+}
+
+.weekly-header-container {
+  width: 100%;
+  margin: auto;
+}
+.weekly-header-container .row {
+  max-width: 100%;
+}
+.weekly-header-container h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  color: #393939;
+}
+
+.header-swtich-container .row {
+  justify-content: end;
+}
+.header-swtich-container .row .col {
+  width: fit-content;
+}
+
+.today-highlight-container h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  color: #393939;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+button {
+  border: none;
+  border-radius: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: #fff;
+  height: 45px;
+  width: 45px;
+}
+button:hover {
+  background-color: #ccc;
+}
+
+.activate {
+  background-color: #000;
+  color: #fff;
+}
+
+.weekly-forecast-container {
+  margin-top: 50px;
+}
+.weekly-forecast-container .row {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  gap: 8px;
+}
+@media screen and (max-width: 992px) {
+  .weekly-forecast-container .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 576px) {
+  .weekly-forecast-container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.daily-card-container {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.daily-card-container h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #393939;
+}
+.daily-card-container img {
+  width: 75%;
+  display: block;
+  margin: 10px auto;
+}
+.daily-card-container p {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: #393939;
+}
+.daily-card-container p span {
+  margin-left: 8px;
+  color: #888888;
+}
+
+.today-highlight-container {
+  margin-top: 50px;
+}
+.today-highlight-container .row {
+  width: 100%;
+  margin: 30px auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 12px;
+}
+@media screen and (max-width: 992px) {
+  .today-highlight-container .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 576px) {
+  .today-highlight-container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.today-highlight-container .hightslight-cards {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+.today-highlight-container .hightslight-cards h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #888888;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.today-highlight-container .hightslight-cards img {
+  max-width: 100%;
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+
+.sunTime-card img {
+  width: 50px !important;
+  display: inline !important;
+  margin-right: 10px !important;
+}
+.sunTime-card span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #393939;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,18 +9,26 @@
     <link rel="stylesheet" href="assets/style/style.css">
 </head>
 <body>
-    <div class="container main-container">
+    <div class="container-fluid main-container">
         <div class="row">
-            <div class="col col-3 today-container">
+            <div class="col col-12 col-md-3 today-container">
                 <div class="location-input-container">
                     <input type="text" class="location-input" placeholder="Search for places ...">
                     <img src="assets/media/magnifying_glass.svg" alt="Magnifying Glass icon">
                 </div>
                 <div class="today-forecast-container">
-                    <img src="assets/media/cloud_forecast_moon_night_precipitation.svg" alt="">
-                    <h3>12<span>&#8451;</span></h3>
-                    <p><strong>Monday,</strong> 16:00</p>
-                    <hr>
+                    <div class="container main-today-weather">
+                        <div class="row">
+                            <div class="col col-6 col-md-12">
+                                <img src="assets/media/cloud_forecast_moon_night_precipitation.svg" alt="">
+                            </div>
+                            <div class="col col-6 col-md-12">
+                                <h3>12<span>&#8451;</span></h3>
+                                <p><strong>Monday,</strong> 16:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="d-none d-md-block">
                     <div class="today-details-container">
                         <img src="assets/media/cloud_clouds_cloudy_forecast_weather.svg" alt="">
                         <span>Mostly Cloudy</span>
@@ -35,7 +43,101 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-9 week-container"></div>
+            <div class="col col-12 col-md-9 week-container">
+                <div class="container weekly-header-container">
+                    <div class="row">
+                        <div class="col col-12 col-md-6 order-2 order-md-1">
+                            <h3>This week's forecast</h3>
+                        </div>
+                        <div class="col col-12 col-md-6 order-1 order-md-2 d-none d-md-block">
+                            <div class="container header-swtich-container">
+                                <div class="row">
+                                    <div class="col col-12 col-md-6 degrees-switcher-container">
+                                        <button class="degree-swticher activate">C<span>&#xb0;</span></button>
+                                        <button class="degree-swticher">F<span>&#xb0;</span></button>
+                                    </div>
+                                    <div class="col col-12 col-md-6 theme-switcher-contaier">
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container weekly-forecast-container">
+                    <div class="row">
+                        <div class="col col-6 col-md-4 col-lg-2 daily-card-container">
+                            <h6>Tue</h6>
+                            <img src="assets/media/day_forecast_sun_sunny_weather.svg" alt="">
+                            <p>15&#xb0;<span>-3&#xb0;</span></p>
+                        </div>
+                        <div class="col col-6 col-md-4 col-lg-2 daily-card-container">
+                            <h6>Wed</h6>
+                            <img src="assets/media/day_forecast_sun_sunny_weather.svg" alt="">
+                            <p>15&#xb0;<span>-3&#xb0;</span></p>
+                        </div>
+                        <div class="col col-6 col-md-4 col-lg-2 daily-card-container">
+                            <h6>Thu</h6>
+                            <img src="assets/media/cloud_cloudy_forecast_precipitation_rain.svg" alt="">
+                            <p>15&#xb0;<span>-3&#xb0;</span></p>
+                        </div>
+                        <div class="col col-6 col-md-4 col-lg-2 daily-card-container">
+                            <h6>Fri</h6>
+                            <img src="assets/media/cloud_clouds_cloudy_forecast_weather.svg" alt="">
+                            <p>15&#xb0;<span>-3&#xb0;</span></p>
+                        </div>
+                        <div class="col col-6 col-md-4 col-lg-2 daily-card-container">
+                            <h6>Sat</h6>
+                            <img src="assets/media/cloud_cloudy_forecast_precipitation_rain.svg" alt="">
+                            <p>15&#xb0;<span>-3&#xb0;</span></p>
+                        </div>
+                        <div class="col col-6 col-md-4 col-lg-2 daily-card-container">
+                            <h6>Sun</h6>
+                            <img src="assets/media/day_forecast_sun_sunny_weather.svg" alt="">
+                            <p>15&#xb0;<span>-3&#xb0;</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container today-highlight-container">
+                    <h3>Today's Highlights</h3>
+                    <div class="row">
+                        <div class="hightslight-cards">
+                            <h6>UV Index</h6>
+                            <img src="assets/media/light_radiation_rays_sun_ultraviolet.svg" alt="">
+                        </div>
+                        <div class="hightslight-cards">
+                            <h6>Wind Status</h6>
+                            <p>7.70<span>km/h</span></p>
+                        </div>
+                        <div class="hightslight-cards sunTime-card">
+                            <h6>Sunrise & Sunset</h6>
+                            <div>
+                                <img src="assets/media/2682824_horizont_morning_sun_sunrise_weather_icon.svg" alt="">
+                                <span>6:35 AM</span>
+                            </div>
+                            <div>
+                                <img src="assets/media/2682825_evening_horizon_sun_sundown_sunset_icon.svg" alt="">
+                                <span>5:42 PM</span>
+                            </div>
+                        </div>
+                        <div class="hightslight-cards">
+                            <h6>Humidity</h6>
+                            <img src="assets/media/2682807_drop_high_humidity_percentage_precipitation_icon.svg" alt="">
+                        </div>
+                        <div class="hightslight-cards">
+                            <h6>Visibility</h6>
+                            <img src="assets/media/2682821_fog_foggy_forecast_mist_weather_icon.svg" alt="">
+                        </div>
+                        <div class="hightslight-cards">
+                            <h6>Air quality</h6>
+                            <img src="assets/media/2682805_acid_carbon_co2_dioxide_mist_icon.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
