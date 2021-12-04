@@ -262,14 +262,36 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+input, input::placeholder, button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+.weekly-forecast-container > .row,
+.today-highlight-container > .row {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+}
+@media screen and (max-width: 992px) {
+  .weekly-forecast-container > .row,
+.today-highlight-container > .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 576px) {
+  .weekly-forecast-container > .row,
+.today-highlight-container > .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .location-input {
   width: 100%;
   border: solid 2px var(--input-border-color);
   border-radius: 20px;
   background: transparent;
-  font-family: "Montserrat", sans-serif;
   color: var(--main-text-color);
-  font-weight: 500;
   text-align: left;
   padding-left: 30px;
   padding-right: 10px;
@@ -280,15 +302,12 @@ input:checked + .slider:before {
 
 .location-input::placeholder {
   color: var(--main-text-color);
-  font-family: "Montserrat", sans-serif;
   font-size: 12px;
 }
 
 button {
   border: none;
   border-radius: 100%;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
   font-size: 20px;
   background-color: #fff;
   height: 45px;
@@ -307,50 +326,45 @@ button:hover {
   margin-top: 50px;
 }
 .weekly-forecast-container .row {
-  width: 100%;
   margin: auto;
-  display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto;
   gap: 8px;
 }
-@media screen and (max-width: 992px) {
-  .weekly-forecast-container .row {
-    grid-template-columns: repeat(3, 1fr);
-  }
+
+.daily-card-container,
+.hightslight-cards {
+  width: 100%;
+  border-radius: 10px;
 }
-@media screen and (max-width: 576px) {
-  .weekly-forecast-container .row {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.daily-card-container h6,
+.hightslight-cards h6 {
+  color: var(--main-text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.daily-card-container p,
+.hightslight-cards p {
+  margin: 0;
+  text-align: center;
+  color: var(--main-text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
 .daily-card-container {
-  width: 100%;
   background-color: var(--bg-daily-card);
-  border-radius: 10px;
   padding: 10px;
 }
 .daily-card-container h6 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
   font-size: 20px;
   text-align: center;
-  color: var(--main-text-color);
 }
 .daily-card-container img {
   width: 75%;
   display: block;
   margin: 10px auto;
 }
-.daily-card-container p {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  text-align: center;
-  color: var(--main-text-color);
-}
-.daily-card-container p span {
+.daily-card-container span {
   margin-left: 8px;
   color: var(--text-color-soft);
 }
@@ -359,33 +373,15 @@ button:hover {
   margin-top: 50px;
 }
 .today-highlight-container .row {
-  width: 100%;
   margin: 30px auto 0 auto;
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
   gap: 12px;
 }
-@media screen and (max-width: 992px) {
-  .today-highlight-container .row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media screen and (max-width: 576px) {
-  .today-highlight-container .row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 .today-highlight-container .hightslight-cards {
-  width: 100%;
   background-color: var(--bg-week-card);
-  border-radius: 10px;
   padding: 15px;
 }
 .today-highlight-container .hightslight-cards h6 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  color: var(--main-text-color);
   font-size: 15px;
   margin-bottom: 20px;
 }
@@ -420,11 +416,6 @@ button:hover {
   width: 70%;
 }
 .wind-container p {
-  margin: 0;
-  text-align: center;
-  color: var(--main-text-color);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
   font-size: 40px;
   position: absolute;
   bottom: 30px;

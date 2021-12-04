@@ -61,6 +61,23 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
+input, input::placeholder, button {
+    font-family: $font;
+    font-weight: 500;
+}
+
+.weekly-forecast-container > .row,
+.today-highlight-container > .row {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    @media screen and(max-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and(max-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 // Style Input Search Location
 .location-input {
@@ -68,9 +85,7 @@ input:checked+.slider:before {
     border: solid 2px var(--input-border-color);
     border-radius: 20px;
     background: transparent;
-    font-family: $font;
     color: var(--main-text-color);
-    font-weight: 500;
     text-align: left;
     padding-left: 30px;
     padding-right: 10px;
@@ -80,17 +95,13 @@ input:checked+.slider:before {
 }
 .location-input::placeholder {
     color: var(--main-text-color);
-    font-family: $font;
     font-size: 12px;
 }
 
 // Style Degrees switcher button 
-
 button {
     border: none;
     border-radius: 100%;
-    font-family: $font;
-    font-weight: 600;
     font-size: 20px;
     background-color: #fff;
     height: 45px;
@@ -100,46 +111,45 @@ button {
         background-color: #ccc;
     }
 }
-
 .activate {
     background-color: #000;
     color: #fff;
 }
-
 //style daily forecast card
 .weekly-forecast-container {
     margin-top: 50px;
-
     .row {
-        width: 100%;
         margin: auto;
-        display: grid;
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: auto;
         gap: 8px;
-
-        @media screen and(max-width: 992px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        @media screen and(max-width: 576px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
     }
 }
 
-.daily-card-container {
+.daily-card-container,
+.hightslight-cards {
     width: 100%;
-    background-color: var(--bg-daily-card);
     border-radius: 10px;
-    padding: 10px;
-
     h6 {
+        color: var(--main-text-color);
         font-family: $font;
-        font-weight: 600;
-        font-size: 20px;
+        font-weight:600;
+    }
+    p {
+        margin: 0;
         text-align: center;
         color: var(--main-text-color);
+        font-family: $font;
+        font-weight: 700;
+    }
+}
+
+
+.daily-card-container {
+    background-color: var(--bg-daily-card);
+    padding: 10px;
+    h6 {
+        font-size: 20px;
+        text-align: center;
     }
 
     img {
@@ -148,49 +158,25 @@ button {
         margin: 10px auto;
     }
 
-    p {
-        margin: 0;
-        font-family: $font;
-        font-weight: 700;
-        text-align: center;
-        color: var(--main-text-color);
-
-        span {
-            margin-left: 8px;
-            color: var(--text-color-soft);
-        }
+    span {
+        margin-left: 8px;
+        color: var(--text-color-soft);
     }
+
 }
 
 //Style hightlight section 
-
 .today-highlight-container {
     margin-top: 50px;
     .row {
-        width: 100%;
         margin: 30px auto 0 auto;
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
         gap: 12px;
-        @media screen and(max-width: 992px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        @media screen and(max-width: 576px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
     }
-
     .hightslight-cards {
-        width: 100%;
         background-color: var(--bg-week-card);
-        border-radius: 10px;
         padding: 15px;
         h6 {
-            font-family: $font;
-            font-weight: 500;
-            color: var(--main-text-color);
             font-size: 15px;
             margin-bottom: 20px;
         }
@@ -228,11 +214,6 @@ button {
         width: 70%;
     }
     p {
-        margin: 0;
-        text-align: center;
-        color: var(--main-text-color);
-        font-family: $font;
-        font-weight: 700;
         font-size: 40px;
         position: absolute;
         bottom: 30px;
