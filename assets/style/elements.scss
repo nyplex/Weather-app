@@ -120,8 +120,14 @@ button {
     margin-top: 50px;
     .row {
         margin: auto;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
+        @media screen and(max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media screen and(max-width: 576px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 }
 
@@ -172,10 +178,17 @@ button {
         margin: 30px auto 0 auto;
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
+        @media screen and(max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media screen and(max-width: 576px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
     .hightslight-cards {
         background-color: var(--bg-week-card);
         padding: 15px;
+        min-height: 172px;
         h6 {
             font-size: 15px;
             margin-bottom: 20px;

@@ -76,6 +76,7 @@ h3 {
 .today-container {
   background-color: var(--bg-today-container);
   border-radius: 30px;
+  position: relative;
 }
 
 .location-input-container {
@@ -94,6 +95,33 @@ h3 {
   .location-input-container {
     margin-left: 20px;
   }
+}
+
+.location-container {
+  display: none;
+  position: absolute;
+  top: 85px;
+  left: 0;
+  background-color: var(--bg-today-container);
+  width: 95%;
+  margin-top: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: var(--main-text-color);
+  overflow: auto;
+  height: 80%;
+  z-index: 100;
+}
+.location-container li {
+  margin-bottom: 10px;
+  list-style: none;
+  margin-right: 10px;
+  border-radius: 7px;
+  padding: 10px;
+}
+.location-container li:hover {
+  cursor: pointer;
+  background-color: #bbbbbb;
 }
 
 .today-forecast-container h3 {
@@ -327,8 +355,18 @@ button:hover {
 }
 .weekly-forecast-container .row {
   margin: auto;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+}
+@media screen and (max-width: 992px) {
+  .weekly-forecast-container .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 576px) {
+  .weekly-forecast-container .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .daily-card-container,
@@ -377,9 +415,20 @@ button:hover {
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
+@media screen and (max-width: 992px) {
+  .today-highlight-container .row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 576px) {
+  .today-highlight-container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .today-highlight-container .hightslight-cards {
   background-color: var(--bg-week-card);
   padding: 15px;
+  min-height: 172px;
 }
 .today-highlight-container .hightslight-cards h6 {
   font-size: 15px;

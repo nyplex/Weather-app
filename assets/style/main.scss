@@ -69,6 +69,7 @@ h3 {
 .today-container {
     background-color: var(--bg-today-container);
     border-radius: 30px;
+    position: relative;
 }
 //Search Location Input
 .location-input-container {
@@ -84,6 +85,33 @@ h3 {
     }
     @media screen and(max-width: 768px) {
         margin-left: 20px;
+    }
+}
+
+.location-container {
+    display: none;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    background-color: var(--bg-today-container);
+    width: 95%;
+    margin-top: 0;
+    font-family: $font;
+    font-weight: 600;
+    color: var(--main-text-color);
+    overflow: auto;
+    height: 80%;
+    z-index: 100;
+    li {
+        margin-bottom: 10px;
+        list-style: none;
+        margin-right: 10px;
+        border-radius: 7px;
+        padding: 10px;
+        &:hover {
+            cursor: pointer;
+            background-color: #bbbbbb;
+        }
     }
 }
 
