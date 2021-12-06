@@ -1,7 +1,20 @@
+const userIP = {
+    ip: null
+}
 /////////////// Theme switcher function ///////////////
 
 $("#theme-switcher").on("change", () => {
     $("#body").toggleClass("dark-theme")
+})
+
+/////////////// Get user's IP ///////////////
+
+$(document).ready(() => {
+    fetch("https://api.ipify.org?format=json")
+    .then(response => response.json())
+    .then(data => {
+        userIP.ip = data.ip
+    })
 })
 
 /////////////// Weather App Functions ///////////////
@@ -68,3 +81,4 @@ $("#location-list").click((e) => {
     }
     return
 })
+
