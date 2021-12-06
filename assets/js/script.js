@@ -1,6 +1,22 @@
-const userIP = {
-    ip: null
-}
+/*To Do
+
+-Get client's IP
+-Use IP to get locatation and current/forecast weather 
+-Save the data (F/C) in a new object 
+-Fill up "search" input with the IP's location
+-Display the data 
+
+-When user click on F||C display the data from the object 
+
+-When user type in the "search" input fetch the SEARCH WEATHER API
+-When the user click on a <li> => fill up the "search" input with the name of the <li>
+and fetch the weather API using the name of the <li> as the location 
+-Save the data (F/C) in a new object 
+-Display the data
+
+*https://royfloresnyc.medium.com/how-to-render-photos-of-any-city-in-the-world-in-your-app-740325fa6ff5
+
+*/
 /////////////// Theme switcher function ///////////////
 
 $("#theme-switcher").on("change", () => {
@@ -13,7 +29,7 @@ $(document).ready(() => {
     fetch("https://api.ipify.org?format=json")
     .then(response => response.json())
     .then(data => {
-        userIP.ip = data.ip
+        const ip = data.ip
     })
 })
 
