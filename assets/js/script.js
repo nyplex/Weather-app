@@ -1,22 +1,27 @@
 /*To Do
 
--Get client's IP
--Use IP to get locatation and current/forecast weather 
--Save the data (F/C) in a new object 
--Fill up "search" input with the IP's location
+-////Get client's IP
+-///Use IP to get locatation and current/forecast weather 
+-(((Save the data (F/C) in a new object))) 
+-///Fill up "search" input with the IP's location
+-Get the city's image 
 -Display the data 
 
 -When user click on F||C display the data from the object 
 
--When user type in the "search" input fetch the SEARCH WEATHER API
--When the user click on a <li> => fill up the "search" input with the name of the <li>
-and fetch the weather API using the name of the <li> as the location 
+-///When user type in the "search" input fetch the SEARCH WEATHER API
+-///When the user click on a <li> => fill up the "search" input with the name of the <li>
+-Fetch the weather API using the name of the <li> as the location 
 -Save the data (F/C) in a new object 
+-Get the city's image
 -Display the data
 
 *https://royfloresnyc.medium.com/how-to-render-photos-of-any-city-in-the-world-in-your-app-740325fa6ff5
 
 */
+
+const mediaPath = "assets/media/weather-icons/"
+
 /////////////// Theme switcher function ///////////////
 
 $("#theme-switcher").on("change", () => {
@@ -29,44 +34,32 @@ $(document).ready(() => {
     fetch("https://api.ipify.org?format=json")
     .then(response => response.json())
     .then(data => {
-        const ip = data.ip
+        getData(data.ip)
     })
 })
 
 /////////////// Weather App Functions ///////////////
-
-const currentWeather = {
-    date: null,
-    time: null,
-    condition: null,
-    icon: null,
-    rain: null,
-    temp: null,
-    feelsLike: null
+let fillInput = (value) => {
+    $("#location-input").val(value)
 }
 
-const forecast = []
-
-let getForecast = (query) => {
-    query.forEach(day => {
-        console.log(day);
-        forecast.push({
-            date: day.date,
-            icon: day.day.condition.code,
-            minTemp: day.day.mintemp_c,
-            maxTemp: day.day.maxtemp_c
-        })
-    })
-    console.log(forecast);
+let displayData = (data) => {
+    $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
+    if(data.current.is_day) {
+        $("#current-icon").attr("src", mediaPath + "day/" + data.current.condition.code + ".png")
+    }else{
+        $("#current-icon").attr("src", mediaPath + "night/" + data.current.condition.code + ".png")
+    }
+    
 }
 
 let getData = (query) => {
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=d38951f8c912461b9b0113400210512&q=${query}&days=6&aqi=yes&alerts=no`)
     .then(response => response.json())
     .then(data => {
-        currentWeather.condition = data.current.condition.text
-        getForecast(data.forecast.forecastday)
-        //console.log(data);
+        fillInput(data.location.name)
+        displayData(data)
+        console.log(data);
     })
 }
 
@@ -90,7 +83,7 @@ $("#location-input").on("input", (e) => {
 $("#location-list").click((e) => {
     if($(e.target).is("li")) {
         const value = $(e.target).text()
-        $("#location-input").val(value)
+        fillInput(value)
         $("#location-list").html("")
         $("#location-container").css("display", "none")
         getData(value)

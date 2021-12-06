@@ -141,6 +141,9 @@ h3 {
 
 .main-today-weather {
     margin: 0;
+    img {
+        max-width: 168px;
+    }
     .row {
         @media screen and(max-width: 768px) {
             align-items: center;
