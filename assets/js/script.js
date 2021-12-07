@@ -1,18 +1,6 @@
 /*To Do
 
--////Get client's IP
--///Use IP to get locatation and current/forecast weather 
--(((Save the data (F/C) in a new object))) 
--///Fill up "search" input with the IP's location
--Get the city's image 
--Display the data 
-
--When user click on F||C display the data from the object 
-
--///When user type in the "search" input fetch the SEARCH WEATHER API
--///When the user click on a <li> => fill up the "search" input with the name of the <li>
--Fetch the weather API using the name of the <li> as the location 
--Save the data (F/C) in a new object 
+-When user click on F||C display correct data
 -Get the city's image
 -Display the data
 
@@ -21,7 +9,8 @@
 */
 
 const mediaPath = "assets/media/weather-icons/"
-const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const forecastContainer = [$("#forecast-1"), $("#forecast-2")]
 
 /////////////// Theme switcher function ///////////////
 
@@ -44,25 +33,45 @@ let fillInput = (value) => {
     $("#location-input").val(value)
 }
 
-let getDay = (date) => {
-    const currentTime = new Date(date)
-    return weekDays[currentTime.getDay()]
-}
 
-let getTime = (date) => {
-    const currentTime = new Date(date)
-    return `${currentTime.getHours()}:${currentTime.getMinutes()}`
-}
+function displayLocalDate() {
+    const today = new Date();
+    let d = weekDays[today.getDay()]
+    let h = today.getHours();
+    let m = today.getMinutes();
+    m = m < 10 ? "0" + m : m
+    document.getElementById('current-day').innerHTML = d + ", " + h + ":" + m;
+    setTimeout(displayLocalDate, 5000);
+  }
 
 let displayData = (data) => {
-    $("#current-day").html("<strong>" + getDay(data.location.localtime) + ", </strong>" +  getTime(data.location.localtime))
+    displayLocalDate()
     $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
+    $("#feelsLike").html("Feels Like " + data.current.feelslike_c + "&#8451;")
+    $("#cloudy").html("Clouds " + data.current.cloud + "%")
+    $("#uv-index").text(data.current.uv)
+    $("#wind-speed").html(data.current.wind_kph + "<span>km/h</span>")
+    $("#sunrise-time").html(data.forecast.forecastday[0].astro.sunrise)
+    $("#sunset-time").html(data.forecast.forecastday[0].astro.sunset)
+    $("#humidity-level").text(data.current.humidity + "%")
+    displayForecast(data.forecast.forecastday)
     if(data.current.is_day) {
         $("#current-icon").attr("src", mediaPath + "day/" + data.current.condition.code + ".png")
     }else{
         $("#current-icon").attr("src", mediaPath + "night/" + data.current.condition.code + ".png")
     }
     
+}
+
+let displayForecast = (data) => {
+    const forecast = [data[1], data[2]]
+    forecastContainer.forEach((val, index) => {
+        const date = new Date(forecast[index].date)
+        const day = weekDays[date.getDay()] 
+        $(val[0]).children('h6').text(day)
+        $(val[0]).children('img').attr('src', mediaPath + "day/" + forecast[index].day.condition.code + ".png")
+        $(val[0]).children('p').html(`${forecast[index].day.maxtemp_c}&#xb0; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_c}&#xb0;`)
+    })
 }
 
 let getData = (query) => {

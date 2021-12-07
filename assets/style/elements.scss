@@ -120,13 +120,13 @@ button {
     margin-top: 50px;
     .row {
         margin: auto;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
         @media screen and(max-width: 992px) {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
         @media screen and(max-width: 576px) {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
@@ -182,7 +182,7 @@ button {
             grid-template-columns: repeat(3, 1fr);
         }
         @media screen and(max-width: 576px) {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
         }
     }
     .hightslight-cards {
@@ -237,4 +237,65 @@ button {
             color: var(--text-color-soft);
         }
     }
+}
+
+.index-uv-container {
+    position: relative;
+    div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 30%;
+        width: 30%;
+        background-color: #efcc00;
+    }
+}
+
+#uv-index {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.humidity-container {
+    position: relative;
+    div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 55%;
+        width: 35%;
+        border-radius: 50%;
+        background-color: #0baeff;
+    }
+}
+
+#humidity-level {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $font;
+    color: #fff;
+}
+
+.visibility-container{
+    position: relative;
+    img {
+        opacity: 0.5;
+    }
+}
+
+#visibility-level {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $font;
+    color: rgb(37, 37, 37);
+    font-weight: 700;
+    font-size: 36px;
 }

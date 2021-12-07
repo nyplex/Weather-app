@@ -358,17 +358,17 @@ button:hover {
 }
 .weekly-forecast-container .row {
   margin: auto;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 @media screen and (max-width: 992px) {
   .weekly-forecast-container .row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 576px) {
   .weekly-forecast-container .row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -425,7 +425,7 @@ button:hover {
 }
 @media screen and (max-width: 576px) {
   .today-highlight-container .row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 .today-highlight-container .hightslight-cards {
@@ -477,6 +477,67 @@ button:hover {
   font-weight: 400;
   font-size: 15px;
   color: var(--text-color-soft);
+}
+
+.index-uv-container {
+  position: relative;
+}
+.index-uv-container div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 30%;
+  width: 30%;
+  background-color: #efcc00;
+}
+
+#uv-index {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.humidity-container {
+  position: relative;
+}
+.humidity-container div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 55%;
+  width: 35%;
+  border-radius: 50%;
+  background-color: #0baeff;
+}
+
+#humidity-level {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+.visibility-container {
+  position: relative;
+}
+.visibility-container img {
+  opacity: 0.5;
+}
+
+#visibility-level {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat", sans-serif;
+  color: #252525;
+  font-weight: 700;
+  font-size: 36px;
 }
 
 /*# sourceMappingURL=style.css.map */
