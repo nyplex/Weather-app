@@ -21,6 +21,7 @@
 */
 
 const mediaPath = "assets/media/weather-icons/"
+const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 /////////////// Theme switcher function ///////////////
 
@@ -43,7 +44,18 @@ let fillInput = (value) => {
     $("#location-input").val(value)
 }
 
+let getDay = (date) => {
+    const currentTime = new Date(date)
+    return weekDays[currentTime.getDay()]
+}
+
+let getTime = (date) => {
+    const currentTime = new Date(date)
+    return `${currentTime.getHours()}:${currentTime.getMinutes()}`
+}
+
 let displayData = (data) => {
+    $("#current-day").html("<strong>" + getDay(data.location.localtime) + ", </strong>" +  getTime(data.location.localtime))
     $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
     if(data.current.is_day) {
         $("#current-icon").attr("src", mediaPath + "day/" + data.current.condition.code + ".png")
