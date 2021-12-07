@@ -432,6 +432,7 @@ button:hover {
   background-color: var(--bg-week-card);
   padding: 15px;
   min-height: 172px;
+  overflow: hidden;
 }
 .today-highlight-container .hightslight-cards h6 {
   font-size: 15px;
