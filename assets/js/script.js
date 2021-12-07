@@ -29,6 +29,7 @@ $(document).ready(() => {
         })
 })
 
+
 /////////////// Weather App Functions ///////////////
 let fillInput = (value) => {
     $("#location-input").val(value)
