@@ -11,6 +11,8 @@
 const mediaPath = "assets/media/weather-icons/"
 const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const forecastContainer = [$("#forecast-1"), $("#forecast-2")]
+let celcius = true
+let weatherData
 
 /////////////// Theme switcher function ///////////////
 
@@ -26,6 +28,16 @@ $(document).ready(() => {
         .then(data => {
             getData(data.ip)
         })
+})
+
+$(".degree-swticher").click((e)=>{
+    const {id} = e.target
+    if(id === "celcius") {
+        celcius = true
+    }else{
+        celcius = false
+    }
+    displayData(weatherData)
 })
 
 /////////////// Weather App Functions ///////////////
@@ -47,11 +59,20 @@ function displayLocalDate() {
 
 let displayData = (data) => {
     displayLocalDate()
-    $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
-    $("#feelsLike").html("Feels Like " + data.current.feelslike_c + "&#8451;")
+    if(celcius) {
+        $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
+        $("#feelsLike").html("Feels Like " + data.current.feelslike_c + "&#8451;")
+        $("#wind-speed").html(data.current.wind_kph + "<span>km/h</span>")
+        $("#visibility-level").html(data.current.vis_km + "<span> Km</span>")
+    }else{
+        $("#current-temp").html(`${data.current.temp_f}<span>&#x2109;</span>`)
+        $("#feelsLike").html("Feels Like " + data.current.feelslike_f + "&#x2109;")
+        $("#wind-speed").html(data.current.wind_mph + "<span>Mph</span>")
+        $("#visibility-level").html(data.current.vis_miles + "<span> Miles</span>")
+    }
+    
     $("#cloudy").html("Clouds " + data.current.cloud + "%")
     $("#uv-index").text(data.current.uv)
-    $("#wind-speed").html(data.current.wind_kph + "<span>km/h</span>")
     $("#sunrise-time").html(data.forecast.forecastday[0].astro.sunrise)
     $("#sunset-time").html(data.forecast.forecastday[0].astro.sunset)
     $("#humidity-level").text(data.current.humidity + "%")
@@ -71,18 +92,27 @@ let displayForecast = (data) => {
         const day = weekDays[date.getDay()]
         $(val[0]).children('h6').text(day)
         $(val[0]).children('img').attr('src', mediaPath + "day/" + forecast[index].day.condition.code + ".png")
-        $(val[0]).children('p').html(`${forecast[index].day.maxtemp_c}&#xb0; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_c}&#xb0;`)
+        if(celcius) {
+            $(val[0]).children('p').html(`${forecast[index].day.maxtemp_c}&#8451; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_c}&#8451;`)
+        }else{
+            $(val[0]).children('p').html(`${forecast[index].day.maxtemp_f}&#x2109; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_f}&#x2109;`)
+        }
+        
     })
 }
 
+
+
 let getData = (query) => {
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=d38951f8c912461b9b0113400210512&q=${query}&days=6&aqi=yes&alerts=no`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=d38951f8c912461b9b0113400210512&q=${query}&days=6&aqi=yes&alerts=no`)
         .then(response => response.json())
         .then(data => {
+            weatherData = data
             fillInput(data.location.name)
-            displayData(data)
+            displayData(weatherData)
         })
 }
+
 
 $("#location-input").on("input", (e) => {
     const {
