@@ -11,8 +11,6 @@
 const mediaPath = "assets/media/weather-icons/"
 const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const forecastContainer = [$("#forecast-1"), $("#forecast-2")]
-let celcius = true
-let weatherData
 
 /////////////// Theme switcher function ///////////////
 
@@ -30,23 +28,12 @@ $(document).ready(() => {
         })
 })
 
-
-$(".degree-swticher").click((e)=>{
-    const {id} = e.target
-    if(id === "celcius") {
-        celcius = true
-    }else{
-        celcius = false
-    }
-    displayData(weatherData)
-})
-
-
 /////////////// Weather App Functions ///////////////
 let fillInput = (value) => {
     $("#location-input").val(value)
+    $("#city-name").text(value)
+    getPic(value)
 }
-
 
 function displayLocalDate() {
     const today = new Date();
@@ -60,20 +47,11 @@ function displayLocalDate() {
 
 let displayData = (data) => {
     displayLocalDate()
-    if(celcius) {
-        $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
-        $("#feelsLike").html("Feels Like " + data.current.feelslike_c + "&#8451;")
-        $("#wind-speed").html(data.current.wind_kph + "<span>km/h</span>")
-        $("#visibility-level").html(data.current.vis_km + "<span> Km</span>")
-    }else{
-        $("#current-temp").html(`${data.current.temp_f}<span>&#x2109;</span>`)
-        $("#feelsLike").html("Feels Like " + data.current.feelslike_f + "&#x2109;")
-        $("#wind-speed").html(data.current.wind_mph + "<span>Mph</span>")
-        $("#visibility-level").html(data.current.vis_miles + "<span> Miles</span>")
-    }
-    
+    $("#current-temp").html(`${data.current.temp_c}<span>&#8451;</span>`)
+    $("#feelsLike").html("Feels Like " + data.current.feelslike_c + "&#8451;")
     $("#cloudy").html("Clouds " + data.current.cloud + "%")
     $("#uv-index").text(data.current.uv)
+    $("#wind-speed").html(data.current.wind_kph + "<span>km/h</span>")
     $("#sunrise-time").html(data.forecast.forecastday[0].astro.sunrise)
     $("#sunset-time").html(data.forecast.forecastday[0].astro.sunset)
     $("#humidity-level").text(data.current.humidity + "%")
@@ -93,23 +71,16 @@ let displayForecast = (data) => {
         const day = weekDays[date.getDay()]
         $(val[0]).children('h6').text(day)
         $(val[0]).children('img').attr('src', mediaPath + "day/" + forecast[index].day.condition.code + ".png")
-        if(celcius) {
-            $(val[0]).children('p').html(`${forecast[index].day.maxtemp_c}&#8451; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_c}&#8451;`)
-        }else{
-            $(val[0]).children('p').html(`${forecast[index].day.maxtemp_f}&#x2109; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_f}&#x2109;`)
-        }
-        
+        $(val[0]).children('p').html(`${forecast[index].day.maxtemp_c}&#xb0; &nbsp;&nbsp;&nbsp;&nbsp;${forecast[index].day.mintemp_c}&#xb0;`)
     })
 }
 
 let getData = (query) => {
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=d38951f8c912461b9b0113400210512&q=${query}&days=6&aqi=yes&alerts=no`)
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=d38951f8c912461b9b0113400210512&q=${query}&days=6&aqi=yes&alerts=no`)
         .then(response => response.json())
         .then(data => {
-            weatherData = data
             fillInput(data.location.name)
-            displayData(weatherData)
-            console.log(weatherData);
+            displayData(data)
         })
 }
 
@@ -120,7 +91,7 @@ $("#location-input").on("input", (e) => {
     $("#location-list").html("")
     if (value.length >= 3) {
         $("#location-container").css("display", "block")
-        fetch(`https://api.weatherapi.com/v1/search.json?key=d38951f8c912461b9b0113400210512&q=${value}`)
+        fetch(`http://api.weatherapi.com/v1/search.json?key=d38951f8c912461b9b0113400210512&q=${value}`)
             .then(response => response.json())
             .then(data => {
                 data.forEach(city => {
@@ -142,3 +113,26 @@ $("#location-list").click((e) => {
     }
     return
 })
+
+
+
+
+let getPic = (query) => {
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+        targetUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${query}&key=AIzaSyCRXAo17cwIDixQEO71iausNIfwaPP2ov8&inputtype=textquery&fields=name,photos`
+    fetch(proxyUrl + targetUrl)
+        .then(blob => blob.json())
+        .then(data => {
+            displayPic(data.candidates[0].photos[0].photo_reference)
+        })
+        .catch(e => {
+            console.log(e);
+            return e;
+        });
+}
+
+
+let displayPic = (ref) => {
+    $("#city-pic").attr("src", `https://maps.googleapis.com/maps/api/place/photo?photoreference=${ref}&key=AIzaSyCRXAo17cwIDixQEO71iausNIfwaPP2ov8&maxwidth=400&maxheight=400`)
+
+}
