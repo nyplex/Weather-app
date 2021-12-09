@@ -153,16 +153,10 @@ let getPic = (query) => {
     fetch(proxyUrl + targetUrl)
         .then(blob => blob.json())
         .then(data => {
-            displayPic(data.candidates[0].photos[0].photo_reference)
+            $("#city-pic").attr("src", `https://maps.googleapis.com/maps/api/place/photo?photoreference=${data.candidates[0].photos[0].photo_reference}&key=AIzaSyCRXAo17cwIDixQEO71iausNIfwaPP2ov8&maxwidth=400&maxheight=400`)
         })
         .catch(e => {
             console.log(e);
             return e;
         });
-}
-
-
-let displayPic = (ref) => {
-    $("#city-pic").attr("src", `https://maps.googleapis.com/maps/api/place/photo?photoreference=${ref}&key=AIzaSyCRXAo17cwIDixQEO71iausNIfwaPP2ov8&maxwidth=400&maxheight=400`)
-
 }
