@@ -121,7 +121,7 @@ $("#location-input").on("input", (e) => {
     $("#location-list").html("")
     if (value.length >= 3) {
         $("#location-container").css("display", "block")
-        fetch(`http://api.weatherapi.com/v1/search.json?key=d38951f8c912461b9b0113400210512&q=${value}`)
+        fetch(`https://api.weatherapi.com/v1/search.json?key=d38951f8c912461b9b0113400210512&q=${value}`)
             .then(response => response.json())
             .then(data => {
                 data.forEach(city => {
