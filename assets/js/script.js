@@ -1,12 +1,3 @@
-/*To Do
-
--When user click on F||C display correct data
--Get the city's image
--Display the data
-
-*https://royfloresnyc.medium.com/how-to-render-photos-of-any-city-in-the-world-in-your-app-740325fa6ff5
-
-*/
 
 const mediaPath = "assets/media/weather-icons/"
 const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -30,17 +21,26 @@ $(document).ready(() => {
         })
 })
 
+
+/////////////// Far/Celcius swither ///////////////
+
 $(".degree-swticher").click((e)=>{
     const {id} = e.target
     if(id === "celcius") {
         celcius = true
+        $("#celcius").addClass("activate")
+        $("#far").removeClass("activate")
     }else{
+        $("#celcius").removeClass("activate")
+        $("#far").addClass("activate")
         celcius = false
     }
     displayData(weatherData)
 })
 
+
 /////////////// Weather App Functions ///////////////
+
 let fillInput = (value) => {
     $("#location-input").val(value)
     $("#city-name").text(value)
